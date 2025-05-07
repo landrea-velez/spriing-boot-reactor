@@ -33,7 +33,7 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploCollectList();
+		ejemploUsuarioComentariosFlatMap();
 	}
 
 	public void ejemploContraPresion() {
@@ -183,9 +183,13 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 			comentarios.addComentario("Estoy tomando el curso de spring con reactor");
 			return comentarios;
 		});
-
+		
+		// emito el usuario en el flijo del flatMap
+		// emito el comentario en el flujo del map		
 		Mono<UsuarioComentarios> usuarioConComentarios = usuarioMono
 				.flatMap(u -> comentariosUsuarioMono.map(c -> new UsuarioComentarios(u, c)));
+		
+		// usuarioConComentarios es un observable
 		usuarioConComentarios.subscribe(uc -> log.info(uc.toString()));
 	}
 

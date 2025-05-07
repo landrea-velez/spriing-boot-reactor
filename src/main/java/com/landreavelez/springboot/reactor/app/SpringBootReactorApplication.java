@@ -33,7 +33,7 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploToString();
+		ejemploCollectList();
 	}
 
 	public void ejemploContraPresion() {
@@ -190,6 +190,7 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 	}
 
 	public void ejemploCollectList() throws Exception {
+		// convertir una lista a un Mono
 		List<Usuario> usuariosList = new ArrayList<>();
 		usuariosList.add(new Usuario("Andres", "Guzman"));
 		usuariosList.add(new Usuario("Pedro", "Fulano"));

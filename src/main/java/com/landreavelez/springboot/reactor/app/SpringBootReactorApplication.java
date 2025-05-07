@@ -33,7 +33,7 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploFlatMap();
+		ejemploToString();
 	}
 
 	public void ejemploContraPresion() {
@@ -213,7 +213,8 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 		usuariosList.add(new Usuario("Juan", "Mengano"));
 		usuariosList.add(new Usuario("Bruce", "Lee"));
 		usuariosList.add(new Usuario("Bruce", "Willis"));
-
+		
+		// convertir un flujo de usuarios a un flujo de string o de cadena (el proceso inverso)
 		Flux.fromIterable(usuariosList).map(
 				usuario -> usuario.getNombre().toUpperCase().concat(" ").concat(usuario.getApellido().toUpperCase()))
 				.flatMap(nombre -> {

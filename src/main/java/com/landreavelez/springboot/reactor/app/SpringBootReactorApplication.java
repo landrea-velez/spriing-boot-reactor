@@ -33,7 +33,7 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ejemploUsuarioComentariosFlatMap();
+		ejemploZipWithRangos();
 	}
 
 	public void ejemploContraPresion() {
@@ -131,9 +131,15 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 
 	public void ejemploZipWithRangos() {
 		Flux<Integer> rangos = Flux.range(0, 4);
+		
 		Flux.just(1, 2, 3, 4).map(i -> (i * 2))
 				.zipWith(rangos, (uno, dos) -> String.format("Primer Flux: %d, Segundo Flux: %d", uno, dos))
 				.subscribe(texto -> log.info(texto));
+		// Combina el flujo de enteros con el rango
+		// Primer Flux: 2, Segundo Flux: 0
+		// Primer Flux: 4, Segundo Flux: 1
+		// Primer Flux: 6, Segundo Flux: 2
+		// Primer Flux: 8, Segundo Flux: 3
 	}
 
 	public void ejemploUsuarioComentariosZipWithForma2() {

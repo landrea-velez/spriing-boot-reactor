@@ -40,7 +40,9 @@ public class SpringBootReactorApplication implements CommandLineRunner {
 		Flux.range(1, 10).log()
 				// .limitRate(5)
 				.subscribe(new Subscriber<Integer>() {
-
+					// Subscriber de reactive streams es una interfaz por lo cual debemos implementar métodos
+					// En el onsuscribe manejamos lo que podemos pedir al productor o al flujo
+					// onNect cada vez que recibimos un objeto, onError dado el caso y onComplete cuando terminamos
 					private Subscription s;
 
 					private Integer limite = 5;
